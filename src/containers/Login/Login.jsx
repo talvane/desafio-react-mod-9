@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
 import Ink from 'react-ink';
 
-//endpoints..
+import { endpoints } from '../../modules/endpoints';
 
 import backgroundImageMobile from '../../assets/images/app-intro-1.jpg';
 import backgroundImageDesktop from '../../assets/images/app-intro-2.jpg';
@@ -63,7 +63,10 @@ const Login = () => {
               ❤️
             </span>
           </strong>
-          <a href={() => {}} className="login__auth-button">
+          <a
+            href={endpoints.getAuthorization.url}
+            className="login__auth-button"
+          >
             Entrar com Spotify
             <Ink />
           </a>
