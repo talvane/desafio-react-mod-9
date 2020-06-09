@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { debounce } from 'lodash';
 import Ink from 'react-ink';
+
+//endpoints..
 
 import backgroundImageMobile from '../../assets/images/app-intro-1.jpg';
 import backgroundImageDesktop from '../../assets/images/app-intro-2.jpg';
+
+import { Logo } from '../../components';
 
 import './Login.scss';
 
@@ -10,6 +15,25 @@ const Login = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const screenWidth = window.innerWidth;
+
+  const onResizeHandler = (e) => {
+    const { innerWidth } = e.target;
+
+    if (innerWidth <= 768) {
+      setIsMobile(true);
+      return;
+    }
+
+    setIsMobile(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', debounce(onResizeHandler, 250));
+
+    return () => {
+      window.removeEventListener('resize', debounce(onResizeHandler));
+    };
+  }, []);
 
   return (
     <main
@@ -24,7 +48,7 @@ const Login = () => {
       }}
     >
       <div className="container">
-        {/*<Logo />*/}
+        <Logo />
 
         <h2 className="login__microcopy">
           Não toca a música inteira,
