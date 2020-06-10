@@ -63,14 +63,12 @@ const Login = () => {
               ❤️
             </span>
           </strong>
-          <a
-            href={endpoints.getAuthorization.url}
-            className="login__auth-button"
-          >
-            Entrar com Spotify
-            <Ink />
-          </a>
         </h2>
+
+        <a href={endpoints.getAuthorization.url} className="login__auth-button">
+          Entrar com Spotify
+          <Ink />
+        </a>
       </div>
     </main>
   );
