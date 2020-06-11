@@ -5,12 +5,12 @@ export const authCallbackError = (errorMessage) => ({
   payload: errorMessage,
 });
 
-/**
- *
- * @param {object} credentials
- * @returns {{payload, type: string}}
- */
 export const authCallbackSucess = (credentials) => ({
   type: AuthConstants.AUTH_CALLBACK_SUCCESS,
   payload: { ...credentials },
+});
+
+export const authLogout = () => ({
+  type: AuthConstants.AUTH_CALLBACK_LOGOUT,
+  payload: '',
 });

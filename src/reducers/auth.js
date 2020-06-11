@@ -32,6 +32,15 @@ const authReducer = (state = authInitialState, action) => {
         isLogged: true,
         tokenType: payload.tokenType,
       };
+    case AuthConstants.AUTH_CALLBACK_LOGOUT:
+      return {
+        accessToken: '',
+        errorMessage: '',
+        expirationTime: '',
+        expiresIn: '',
+        isLogged: false,
+        tokenType: '',
+      };
     default:
       return state;
   }

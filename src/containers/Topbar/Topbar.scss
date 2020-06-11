@@ -46,5 +46,14 @@
         width: auto;
       }
     }
+
+    &__logout {
+      background-color: #00f387;
+      border-radius: 50px;
+      border: 1px solid #5c5970;
+      height: 35px;
+      overflow: hidden;
+      width: 35px;
+    }
   }
 }
