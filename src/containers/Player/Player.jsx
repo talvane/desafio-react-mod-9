@@ -128,6 +128,8 @@ const Player = () => {
           </div>
 
           <audio
+            muted
+            playsInline
             ref={audioElementRef}
             autoPlay
             onEnded={handleOnEnded}
