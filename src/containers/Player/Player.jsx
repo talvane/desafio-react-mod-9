@@ -55,7 +55,19 @@ const Player = () => {
 
     if (prevPlayingNowId === playingNowId) {
       if (isPlaying && audioPlayer?.paused) {
-        audioPlayer.play();
+        audioPlayer.load();
+
+        const play = audioPlayer.play();
+
+        if (play !== 'undefined') {
+          play
+            .then(() => {
+              console.log('play now');
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       }
 
       if (!isPlaying && !audioPlayer?.paused) {
@@ -71,6 +83,11 @@ const Player = () => {
       dispatch(setPlayerHeight(playerHeight));
     }
   }, [isPlaying, dispatch, playerHeight]);
+
+  const handleOnPlay = (e) => {
+    const audioPlayer = audioElementRef.current;
+    audioPlayer.muted = false;
+  };
 
   return (
     <div
@@ -128,6 +145,7 @@ const Player = () => {
           </div>
 
           <audio
+            muted
             playsInline
             ref={audioElementRef}
             autoPlay
@@ -135,6 +153,7 @@ const Player = () => {
             onTimeUpdate={handleTimeUpdate}
             preload="metadata"
             src={currentTrack.preview_url}
+            onPlay={handleOnPlay}
           />
         </div>
       )}
