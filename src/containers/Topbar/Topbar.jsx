@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { FiLogOut } from 'react-icons/fi';
 
 import { Logo } from '../../components';
@@ -10,7 +11,7 @@ import { authLogout } from '../../actions/auth';
 import './Topbar.scss';
 
 const Topbar = () => {
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -27,11 +28,11 @@ const Topbar = () => {
         </Link>
 
         <div className="user">
-          <span className="user__name">{user.name}</span>
+          {/*<span className="user__name">{user.name}</span>*/}
 
-          <figure className="user__thumb">
+          {/*<figure className="user__thumb">
             <img src={user.thumb} alt={`foto de perfil de ${user.name}`} />
-          </figure>
+          </figure>*/}
 
           <button className="user__logout" type="submit" onClick={Logout}>
             <FiLogOut />
